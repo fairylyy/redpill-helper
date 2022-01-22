@@ -8,14 +8,11 @@
         "local_rp_load_use": "false",
         "local_rp_load_path": "./redpill-load",
         "auto_clean": "false",
-        "use_build_cache": "true",
+        "use_build_cache": "false",
         "clean_images": "all",
         "use_custom_bind_mounts": "false",
         "custom_bind_mounts": [
-            {
-                "host_path": "change_me",
-                "container_path" :"/change_me"
-            }
+         
         ]
     },
     "build_configs": [
@@ -46,8 +43,8 @@
             }
         },
         {
-            "id": "bromolow-7.0.1-42218",
-            "platform_version": "bromolow-7.0.1-42218",
+            "id": "bromolow-7.0-41222",
+            "platform_version": "bromolow-7.0-41222",
             "user_config_json": "bromolow_user_config.json",
             "docker_base_image": "debian:8-slim",
             "compile_with": "toolkit_dev",
@@ -67,8 +64,8 @@
                 "branch": "master"
             },
             "redpill_load": {
-                "source_url": "https://github.com/jumkey/redpill-load.git",
-                "branch": "develop"
+                "source_url": "https://github.com/RedPill-TTG/redpill-load.git",
+                "branch": "master"
             }
         },
         {
@@ -98,8 +95,8 @@
             }
         },
         {
-            "id": "apollolake-7.0.1-42218",
-            "platform_version": "apollolake-7.0.1-42218",
+            "id": "apollolake-7.0-41890",
+            "platform_version": "apollolake-7.0-41890",
             "user_config_json": "apollolake_user_config.json",
             "docker_base_image": "debian:10-slim",
             "compile_with": "toolkit_dev",
@@ -119,8 +116,8 @@
                 "branch": "master"
             },
             "redpill_load": {
-                "source_url": "https://github.com/jumkey/redpill-load.git",
-                "branch": "develop"
+                "source_url": "https://github.com/RedPill-TTG/redpill-load.git",
+                "branch": "master"
             }
         }
     ]
