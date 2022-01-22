@@ -12,6 +12,7 @@ jobs:
       - name: 构建工具链
         run: |
           sudo chmod +x rp-helper.sh
+          ./rp-helper.sh clean all
           ./rp-helper.sh build bromolow-7.0.1-42218
           ./rp-helper.sh build apollolake-7.0.1-42218
 
