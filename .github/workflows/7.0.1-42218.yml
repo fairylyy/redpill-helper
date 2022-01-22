@@ -15,6 +15,7 @@ jobs:
           cp -f user_config.json user_config.json.bak
           sed -i -e 's\0x0001\0x0002\g' -e 's\0x46f4\0x0002\g' -e 's\1234XXX123\1230LWN003637\g' -e 's\MAC1ADDRESS\245EBE0299E8\g' -e 's\MAC2ADDRESS\001B21BC18BB\g' user_config.json
           sed -i -e 's\0x0001\0x0002\g' -e 's\0x46f4\0x0002\g' -e 's\1234XXX123\1230LWN003637\g' -e 's\MAC1ADDRESS\245EBE0299E8\g' -e 's\MAC2ADDRESS\001B21BC18BB\g' bromolow_user_config.json
+          cat bromolow_user_config.json
           ./rp-helper.sh build bromolow-7.0.1-42218
 
       - name: 添加扩展驱动-3615
