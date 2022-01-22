@@ -17,6 +17,12 @@ jobs:
 
       - name: 添加扩展驱动
         run: |
+          ./rp-helper.sh ext https://raw.githubusercontent.com/jumkey/redpill-load/develop/redpill-acpid/rpext-index.json
+          ./rp-helper.sh ext https://raw.githubusercontent.com/jumkey/redpill-load/develop/redpill-virtio/rpext-index.json
+          ./rp-helper.sh ext https://raw.githubusercontent.com/jumkey/redpill-load/develop/redpill-boot-wait/rpext-index.json
+          
+      - name: 添加扩展驱动2
+        run: |
           ./rp-helper.sh ext bromolow-7.0.1-42218 add https://raw.githubusercontent.com/jumkey/redpill-load/develop/redpill-acpid/rpext-index.json
           ./rp-helper.sh ext bromolow-7.0.1-42218 add https://raw.githubusercontent.com/jumkey/redpill-load/develop/redpill-virtio/rpext-index.json
           ./rp-helper.sh ext bromolow-7.0.1-42218 add https://raw.githubusercontent.com/jumkey/redpill-load/develop/redpill-boot-wait/rpext-index.json
