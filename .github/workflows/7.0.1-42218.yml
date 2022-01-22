@@ -36,7 +36,6 @@ jobs:
         run: |
           ./rp-helper.sh clean all
           sudo rm -rf custom/extensions
-          sudo mdkir -p custom/extensions
           ./rp-helper.sh build apollolake-7.0.1-42218
 
       - name: 添加扩展驱动-918
