@@ -1,0 +1,69 @@
+name: 编译 "6.2.4-25556"
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 同步仓库
+        uses: actions/checkout@v2
+
+      - name: 构建工具链-3615
+        run: |
+          sudo chmod +x rp-helper.sh
+          sed -i -e 's\0x0001\0x0002\g' -e 's\0x46f4\0x0002\g' -e 's\1234XXX123\1630LWN009257\g' -e 's\MAC1ADDRESS\245EBE0299E8\g' -e 's\MAC2ADDRESS\001B21BC18BB\g' bromolow_user_config.json
+          ./rp-helper.sh build bromolow-6.2.4-25556
+
+      - name: 添加扩展驱动-3615
+        run: |
+          ./rp-helper.sh ext bromolow-6.2.4-25556 add https://raw.githubusercontent.com/jumkey/redpill-load/develop/redpill-acpid/rpext-index.json
+          ./rp-helper.sh ext bromolow-6.2.4-25556 add https://raw.githubusercontent.com/jumkey/redpill-load/develop/redpill-boot-wait/rpext-index.json
+          ./rp-helper.sh ext bromolow-6.2.4-25556 add https://raw.githubusercontent.com/pocopico/rp-ext/master/mpt3sas/rpext-index.json
+          ./rp-helper.sh ext bromolow-6.2.4-25556 add https://raw.githubusercontent.com/pocopico/rp-ext/master/ixgbe/rpext-index.json
+          ./rp-helper.sh ext bromolow-6.2.4-25556 add https://raw.githubusercontent.com/pocopico/rp-ext/master/igb/rpext-index.json
+          ./rp-helper.sh ext bromolow-6.2.4-25556 add https://raw.githubusercontent.com/pocopico/rp-ext/master/e1000/rpext-index.json
+          ./rp-helper.sh ext bromolow-6.2.4-25556 add https://raw.githubusercontent.com/pocopico/rp-ext/master/vmxnet3/rpext-index.json
+          ./rp-helper.sh ext bromolow-6.2.4-25556 add https://raw.githubusercontent.com/pocopico/rp-ext/master/vmw_pvscsi/rpext-index.json
+
+      - name: 编译引导镜像-3615
+        run: |
+          ./rp-helper.sh auto bromolow-6.2.4-25556
+          
+      - name: 构建工具链-918
+        run: |
+          ./rp-helper.sh clean all
+          sudo rm -rf custom/extensions
+          ./rp-helper.sh build apollolake-6.2.4-25556
+
+      - name: 添加扩展驱动-918
+        run: |
+          ./rp-helper.sh ext apollolake-6.2.4-25556 add https://raw.githubusercontent.com/jumkey/redpill-load/develop/redpill-virtio/rpext-index.json
+          ./rp-helper.sh ext apollolake-6.2.4-25556 add https://raw.githubusercontent.com/jumkey/redpill-load/develop/redpill-boot-wait/rpext-index.json
+          ./rp-helper.sh ext apollolake-6.2.4-25556 add https://raw.githubusercontent.com/pocopico/rp-ext/master/mpt3sas/rpext-index.json
+          ./rp-helper.sh ext apollolake-6.2.4-25556 add https://raw.githubusercontent.com/pocopico/rp-ext/master/ixgbe/rpext-index.json
+          ./rp-helper.sh ext apollolake-6.2.4-25556 add https://raw.githubusercontent.com/pocopico/rp-ext/master/igb/rpext-index.json
+          ./rp-helper.sh ext apollolake-6.2.4-25556 add https://raw.githubusercontent.com/pocopico/rp-ext/master/vmxnet3/rpext-index.json
+          ./rp-helper.sh ext apollolake-6.2.4-25556 add https://raw.githubusercontent.com/pocopico/rp-ext/master/vmw_pvscsi/rpext-index.json
+          ./rp-helper.sh ext apollolake-6.2.4-25556 add https://raw.githubusercontent.com/pocopico/rp-ext/master/r8125/rpext-index.json
+
+      - name: 编译引导镜像-918
+        run: |
+         sed -i -e 's\0x0001\0x0002\g' -e 's\0x46f4\0x0002\g' -e 's\1234XXX123\1330PDN004175\g' -e 's\MAC1ADDRESS\245EBE0299E8\g' -e 's\MAC2ADDRESS\001B21BC18BB\g' apollolake_user_config.json
+         ./rp-helper.sh auto apollolake-6.2.4-25556
+
+      - name: 清理并构建缓存
+        run: ./rp-helper.sh clean all
+          
+      - name: Archive DS3615xs 7.0.1 loader image
+        uses: actions/upload-artifact@v2
+        with:
+          name: redpill-DS3615xs_6.2.4-loader
+          path: images/redpill-DS3615xs_*.img
+
+
+      - name: Archive DS918+ 7.0.1 loader image
+        uses: actions/upload-artifact@v2
+        with:
+          name: redpill-DS918+_6.2.4-loader
+          path: images/redpill-DS918+_*.img
