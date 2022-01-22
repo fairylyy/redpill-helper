@@ -12,6 +12,7 @@ jobs:
       - name: 构建-3617
         run: |
           sudo chmod +x rp-helper.sh
+          ./rp-helper.sh clean all
           sed -i -e 's\0x0001\0x0002\g' -e 's\0x46f4\0x0002\g' -e 's\1234XXX123\1660ODN008751\g' -e 's\MAC1ADDRESS\245EBE0299E8\g' -e 's\MAC2ADDRESS\001B21BC18BB\g' broadwell_user_config-test.json
           ./rp-helper.sh build broadwell-7.0.1-42218
           ./rp-helper.sh ext broadwell-7.0.1-42218 add https://raw.githubusercontent.com/pocopico/rp-ext/master/mpt3sas/rpext-index.json
