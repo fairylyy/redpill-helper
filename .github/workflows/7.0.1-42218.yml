@@ -28,7 +28,6 @@ jobs:
           ./rp-helper.sh ext bromolow-7.0.1-42218 add https://raw.githubusercontent.com/pocopico/rp-ext/master/vmxnet3/rpext-index.json
           ./rp-helper.sh ext bromolow-7.0.1-42218 add https://raw.githubusercontent.com/pocopico/rp-ext/master/vmw_pvscsi/rpext-index.json
           ./rp-helper.sh ext bromolow-7.0.1-42218 add https://raw.githubusercontent.com/pocopico/rp-ext/master/r8125/rpext-index.json
-          
           ./rp-helper.sh ext apollolake-7.0.1-42218 add https://raw.githubusercontent.com/jumkey/redpill-load/develop/redpill-acpid/rpext-index.json
           ./rp-helper.sh ext apollolake-7.0.1-42218 add https://raw.githubusercontent.com/jumkey/redpill-load/develop/redpill-virtio/rpext-index.json
           ./rp-helper.sh ext apollolake-7.0.1-42218 add https://raw.githubusercontent.com/jumkey/redpill-load/develop/redpill-boot-wait/rpext-index.json
