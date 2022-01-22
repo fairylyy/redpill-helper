@@ -22,7 +22,7 @@
         {
             "id": "bromolow-6.2.4-25556",
             "platform_version": "bromolow-6.2.4-25556",
-            "user_config_json": "apollolake_user_config.json",
+            "user_config_json": "bromolow_user_config.json",
             "docker_base_image": "debian:8-slim",
             "compile_with": "kernel",
             "redpill_lkm_make_target": "dev-v6",
@@ -48,7 +48,7 @@
         {
             "id": "bromolow-7.0.1-42218",
             "platform_version": "bromolow-7.0.1-42218",
-            "user_config_json": "apollolake_user_config.json",
+            "user_config_json": "bromolow_user_config.json",
             "docker_base_image": "debian:8-slim",
             "compile_with": "toolkit_dev",
             "redpill_lkm_make_target": "dev-v7",
