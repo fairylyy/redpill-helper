@@ -30,7 +30,7 @@ jobs:
 
       - name: 编译引导镜像-3615
         run: |
-          sed -i -e 's\0x0001\0x0002\g' -e 's\0x46f4\0x0002\g' -e 's\1234XXX123\1230LWN003637\g' -e 's\MAC1ADDRESS\245EBE0299E8\g' -e 's\MAC2ADDRESS\001B21BC18BB\g' bromolow_user_config.json
+          sed -i -e 's\0x0001\0x0002\g' -e 's\0x46f4\0x0002\g' -e 's\1234XXX123\1230LWN003637\g' -e 's\MAC1ADDRESS\245EBE0299E8\g' -e 's\MAC2ADDRESS\001B21BC18BB\g' user_config.json
           ./rp-helper.sh auto bromolow-7.0.1-42218
           
       - name: 构建工具链-918
@@ -54,7 +54,7 @@ jobs:
 
       - name: 编译引导镜像-918
         run: |
-         sed -i -e 's\0x0001\0x0002\g' -e 's\0x46f4\0x0002\g' -e 's\1234XXX123\1230LWN003637\g' -e 's\MAC1ADDRESS\245EBE0299E8\g' -e 's\MAC2ADDRESS\001B21BC18BB\g' apollolake_user_config.json
+         sed -i -e 's\0x0001\0x0002\g' -e 's\0x46f4\0x0002\g' -e 's\1234XXX123\1230LWN003637\g' -e 's\MAC1ADDRESS\245EBE0299E8\g' -e 's\MAC2ADDRESS\001B21BC18BB\g' user_config.json
          ./rp-helper.sh auto apollolake-7.0.1-42218
 
       - name: 清理并构建缓存
