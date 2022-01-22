@@ -10,7 +10,7 @@
         "auto_clean": "false",
         "use_build_cache": "false",
         "clean_images": "all",
-        "use_custom_bind_mounts": "false",
+        "use_custom_bind_mounts": "true",
         "custom_bind_mounts": [
          
         ]
